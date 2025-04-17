@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme{
+  --color-palette-blue: #3A8DFF;
+  --color-palette-blue-hover: #297BEB;
+
+  --color-palette-error: #FF4D4D;
+  --color-palette-error-hover: #E44D4D;
+
+  --color-palette-green-lime: #A6FF4D;
+  --color-palette-green-lime-hover: #94E244;
+
+  --color-palette-purple: #905DFF;
+  --color-palette-purple-hover: #7B4DEB;
+
+  --color-palette-red-soft: #FF5E5E;
+  --color-palette-red-soft-hover: #E44D4D;
+
+  --color-palette-background: #F8F9FC;
+  --color-palette-border: #E1E4EB;
+
+  --color-palette-text-primary: #1E1E1E;
+  --color-palette-text-secondary: #4B4B4B;
+
+  /* 💡 Extra útiles */
+  --color-palette-crystal-hover: #e7e8e8;
+  --color-palette-surface-white: #FFFFFF;
+  --color-palette-shadow-light: rgba(0, 0, 0, 0.05);
+  --color-palette-shadow-medium: rgba(0, 0, 0, 0.1);
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+  label {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    transition: all 0.3s;
+  }
+
+  textarea + label {
+    bottom: inherit;
+    top: 30px;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 6px;
+    transition: all 0.3s;
+    outline: none;
+    appearance: none;
+  }
+
+  input::placeholder {
+    visibility: hidden;
+  }
+
+  input:focus + label,
+  input:not(:placeholder-shown) + label {
+    transform: translateY(-34px);
+    font-size: 12px;
+  }
+
+  input:focus,
+  input:not(:placeholder-shown):valid {
+    @apply border-palette-blue
+  }
+
+  /* Borde de color de error cuando es inválido pero tiene al menos un carácter */
+  input:not(:placeholder-shown):invalid {
+      @apply border-palette-error
+  }
+}
+
+button, a, label{
+  cursor: pointer;
+  @apply transition-colors duration-150;
+}
