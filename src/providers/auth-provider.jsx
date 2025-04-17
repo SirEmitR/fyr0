@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
+import React, { use, useState } from 'react'
 import { AuthContext } from '../context/auth-context'
+import { fetchUserAuthStatus } from '../data/auth';
 
 const AuthProvider = ({children}) => {
-    const [user, setUser] = useState(null)
+    const auth = use(fetchUserAuthStatus());
+    const initialUser = !auth.error ? { ...auth.data, ID: auth.data.id } : null;
+    const [user, setUser] = useState(initialUser);
 
     const loggin = (res) => {
         setUser(res)
